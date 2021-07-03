@@ -16,7 +16,63 @@ export class SynthsComponent implements OnInit {
       category: "synth",
       price: 10,
       base64image: undefined
+    },
+    {
+      id: 10,
+      name: "synth",
+      description: "synth",
+      category: "synth",
+      price: 10,
+      base64image: undefined
+    },
+    {
+      id: 10,
+      name: "synth",
+      description: "synth",
+      category: "synth",
+      price: 10,
+      base64image: undefined
+    },
+    {
+      id: 10,
+      name: "synth",
+      description: "synth",
+      category: "synth",
+      price: 10,
+      base64image: undefined
+    },
+    {
+      id: 10,
+      name: "synth",
+      description: "synth",
+      category: "synth",
+      price: 10,
+      base64image: undefined
+    },{
+      id: 10,
+      name: "synth",
+      description: "synth",
+      category: "synth",
+      price: 10,
+      base64image: undefined
+    },
+    {
+      id: 10,
+      name: "synth",
+      description: "synth",
+      category: "synth",
+      price: 10,
+      base64image: undefined
+    },
+    {
+      id: 10,
+      name: "synth",
+      description: "synth",
+      category: "synth",
+      price: 10,
+      base64image: undefined
     }
+    
   ];
 
   constructor() { }
