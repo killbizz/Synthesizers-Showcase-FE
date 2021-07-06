@@ -1,0 +1,20 @@
+.newSynthesizerForm {
+    margin-left:8em;
+    margin-right:8em;
+}
+
+.newSynthesizerForm input {
+    width: 20em;
+    text-align: center;
+    margin: 0.4em;
+}
+
+.boxing-form {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}

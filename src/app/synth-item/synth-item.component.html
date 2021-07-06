@@ -1,9 +1,11 @@
-<div class="card text-white bg-secondary ">
-    <div class="card-header text-center">{{synth?.name}}</div>
-        <div class="card-body">
-            <h5 class="card-title text-center">{{synth?.description}}</h5>
-            <p class="card-text text-center">{{synth?.price}}</p>
-            <button type="button" class="btn btn-primary">Details</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-        </div>
+<div class="card text-white bg-secondary">
+    <div class="card-header text-center">{{synth.id}}</div>
+    <img class="card-img-top rounded" width="300" [src]="synth?.base64image" alt={{synth.name}} />
+    <div class="card-body">
+        <h5 class="card-title text-center">{{synth?.name}}</h5>
+        <p class="card-text text-center">{{synth?.description}}</p>
+        <p class="card-text text-center">{{synth?.price}}&euro;</p>
+        <button type="button" class="btn btn-primary">Details</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+    </div>
 </div>
