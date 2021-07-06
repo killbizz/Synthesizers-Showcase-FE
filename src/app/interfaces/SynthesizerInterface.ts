@@ -1,5 +1,5 @@
 export interface SynthesizerInterface {
-    id: number;
+    id?: number;
     name: string;
     description: string;
     category: string;
