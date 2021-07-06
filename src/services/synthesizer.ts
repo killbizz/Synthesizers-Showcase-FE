@@ -1,6 +1,8 @@
 import getlambdaResponse from 'src/lib/lambdas';
 import { SynthesizerInterface } from './../app/interfaces/SynthesizerInterface';
 
+// sposto creo un componente SERVICE 
+
 
 export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<boolean> => {
     const { response } = (
@@ -22,9 +24,11 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     const { response } = (
       await getlambdaResponse("synth", "GET", null)
     ).props;
+
+    console.log(response);
   
-    if (response.error || !response.result.items) return [];
-    return response.result.items;
+    if (!response._embedded) return [];
+    return response._embedded.synth;
   };
   
   export const updateSynthesizer = async (id: string, modifiedSynth: SynthesizerInterface): Promise<boolean> => {

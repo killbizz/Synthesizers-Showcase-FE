@@ -2,7 +2,7 @@ export default class Fetcher {
   url: URL;
 
   constructor(funName: string) {
-    this.url = new URL( // creates the URL based on enviroment variables and the function name
+    this.url = new URL(
       `http://localhost:8080/${funName}`
     );
   }
@@ -10,7 +10,11 @@ export default class Fetcher {
   async getJSONResponse(method: string, params: string | null = null): Promise<any> {
     let req = null;
     if (method === "GET") {
-      req = await fetch(this.url.href);
+      req = await fetch(this.url.href, {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
     } else {
       req = await fetch(this.url.href, {
         body: params,
@@ -21,7 +25,7 @@ export default class Fetcher {
       });
     }
 
-    const data = await req.json();
+    const data = req.json();
     return data;
   }
 }

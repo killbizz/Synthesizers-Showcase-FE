@@ -1,3 +1,4 @@
+import { getSynthesizers } from './../../services/synthesizer';
 import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,76 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SynthsComponent implements OnInit {
 
-  synths: SynthesizerInterface[] = [
-    {
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    },
-    {
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    },
-    {
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    },
-    {
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    },
-    {
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    },{
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    },
-    {
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    },
-    {
-      id: 10,
-      name: "synth",
-      description: "synth",
-      category: "synth",
-      price: 10,
-      base64image: undefined
-    }
-    
-  ];
+  synths: SynthesizerInterface[] = [];
+
+  getAllSynthesizers = async () => {
+    this.synths = await getSynthesizers();
+  }
 
   constructor() { }
 
   ngOnInit(): void {
+    this.getAllSynthesizers();
   }
 
 }
