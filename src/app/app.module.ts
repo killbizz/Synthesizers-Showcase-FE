@@ -9,6 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SynthsComponent } from './synths/synths.component';
 import { SynthItemComponent } from './synth-item/synth-item.component';
+import { SynthDetailsComponent } from './synth-details/synth-details.component';
+import { SynthNewComponent } from './synth-new/synth-new.component';
 
 const routes : Routes = [
   {
@@ -24,6 +26,10 @@ const routes : Routes = [
   {
     path: 'synths',
     component: SynthsComponent
+  },
+  {
+    path: 'synths/new',
+    component: SynthNewComponent
   }
 ]
 
@@ -33,7 +39,9 @@ const routes : Routes = [
     NavbarComponent,
     FooterComponent,
     SynthsComponent,
-    SynthItemComponent
+    SynthItemComponent,
+    SynthDetailsComponent,
+    SynthNewComponent
   ],
   imports: [
     BrowserModule,
