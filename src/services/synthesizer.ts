@@ -5,9 +5,11 @@ import { SynthesizerInterface } from './../app/interfaces/SynthesizerInterface';
 
 
 export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<boolean> => {
+    console.log(synth);
     const { response } = (
       await getlambdaResponse("synth", "POST", JSON.stringify(synth))
     ).props;
+    console.log(response);
     if (response.err !== undefined) {
       return false;
     }
@@ -47,4 +49,13 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     const response = (await getlambdaResponse(`synth/${id}`, "GET", null)).props.response
       .result;
     return response || null;
+  };
+
+  export const fileToBase64 = async (file: any): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsBinaryString(file);
+      reader.onload = () => resolve('data:image/png;base64,'+btoa(reader.result!.toString()));
+      reader.onerror = (e) => reject(e);
+    });
   };
