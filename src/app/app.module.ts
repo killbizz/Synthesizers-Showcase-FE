@@ -34,6 +34,10 @@ const routes : Routes = [
   },{
     path: 'synths/:id',
     component: SynthDetailsComponent
+  },
+  {
+    path: 'synths/:id/edit',
+    component: SynthEditComponent
   }
 ]
 

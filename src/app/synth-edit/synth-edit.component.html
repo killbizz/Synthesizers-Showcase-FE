@@ -1,1 +1,65 @@
-<p>synth-edit works!</p>
+<div class="old-info">
+    <h1 class="text-center">{{synth.name}} Current Informations</h1>
+    <form>
+        <div class="boxing-form">
+            <div class="form-group row">
+                <img class="card-img-top rounded" [src]="synth?.base64image" alt={{synth.name}} />
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control-plaintext text-center" readonly name="name" id="name" placeholder={{synth.name}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="description" class="col-sm-4 col-form-label">Description</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control-plaintext text-center" readonly aria-describedby="textHelp" id="description" name="description" rows="4" placeholder={{synth.description}}></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="category" class="col-sm-4 col-form-label">Category</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext text-center" name="category" id="category" placeholder={{synth.category}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="price" class="col-sm-4 col-form-label">Price</label>
+                <div class="col-sm-8">
+                    <input type="number" min="0" step="0.01" readonly class="form-control-plaintext text-center" name="price" id="price" placeholder={{synth.price}}>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="new-info">
+    <h1 class="text-center">{{synth.name}} Update Form</h1>
+    <form class="newSynthesizerForm" (submit)="uploadSynthesizer($event)">
+        <div class="boxing-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" aria-describedby="textHelp" id="description" name="description" rows="4"></textarea>
+                <small id="textHelp" class="form-text text-muted">Max. 500 characters</small>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" class="form-control" name="category" id="category" placeholder="Category">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" min="0" step="0.01" class="form-control" name="price" id="price">
+            </div>
+            <div class="form-group">
+                <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg, .pdf" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                <a routerLink="/synths"><button type="button" class="btn btn-danger mb-2">Cancel</button></a>
+            </div>
+        </div>
+    </form>
+</div>
