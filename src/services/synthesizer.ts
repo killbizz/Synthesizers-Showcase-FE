@@ -1,15 +1,13 @@
 import getlambdaResponse from 'src/lib/lambdas';
 import { SynthesizerInterface } from './../app/interfaces/SynthesizerInterface';
 
-// sposto creo un componente SERVICE 
+// sposto tutto in un componente SERVICE 
 
 
 export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<boolean> => {
-    console.log(synth);
     const { response } = (
       await getlambdaResponse("synth", "POST", JSON.stringify(synth))
     ).props;
-    console.log(response);
     if (response.err !== undefined) {
       return false;
     }
@@ -26,8 +24,6 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     const { response } = (
       await getlambdaResponse("synth", "GET", null)
     ).props;
-
-    console.log(response);
   
     if (!response._embedded) return [];
     return response._embedded.synth;
@@ -45,9 +41,8 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     return true;
   };
   
-  export const getSynthesizer = async (id: string): Promise<SynthesizerInterface> => {
-    const response = (await getlambdaResponse(`synth/${id}`, "GET", null)).props.response
-      .result;
+  export const getSynthesizer = async (id: number): Promise<SynthesizerInterface> => {
+    const { response } = (await getlambdaResponse(`synth/${id}`, "GET", null)).props;
     return response || null;
   };
 
