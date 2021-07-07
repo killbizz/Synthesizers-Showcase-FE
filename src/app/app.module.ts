@@ -11,6 +11,7 @@ import { SynthsComponent } from './synths/synths.component';
 import { SynthItemComponent } from './synth-item/synth-item.component';
 import { SynthDetailsComponent } from './synth-details/synth-details.component';
 import { SynthNewComponent } from './synth-new/synth-new.component';
+import { SynthEditComponent } from './synth-edit/synth-edit.component';
 
 const routes : Routes = [
   {
@@ -30,6 +31,9 @@ const routes : Routes = [
   {
     path: 'synths/new',
     component: SynthNewComponent
+  },{
+    path: 'synths/:id',
+    component: SynthDetailsComponent
   }
 ]
 
@@ -41,7 +45,8 @@ const routes : Routes = [
     SynthsComponent,
     SynthItemComponent,
     SynthDetailsComponent,
-    SynthNewComponent
+    SynthNewComponent,
+    SynthEditComponent
   ],
   imports: [
     BrowserModule,
