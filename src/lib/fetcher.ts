@@ -24,8 +24,9 @@ export default class Fetcher {
         method,
       });
     }
-
-    const data = req.json();
-    return data;
+    if(method !== "DELETE"){
+      const data = req.json();
+      return data;
+    }
   }
 }
