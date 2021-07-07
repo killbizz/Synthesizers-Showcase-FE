@@ -14,10 +14,8 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     return true;
   };
   
-  export const removeSynthesizer = async (id: string): Promise<boolean> => {
-    const { response } = (await getlambdaResponse(`synth/${id}`, "DELETE", null)).props;
-    if (response.err !== undefined) return false;
-    return true;
+  export const deleteSynthesizer = async (id: number): Promise<void> => {
+    await getlambdaResponse(`synth/${id}`, "DELETE", null);
   };
   
   export const getSynthesizers = async (): Promise<SynthesizerInterface[]> => {
@@ -29,7 +27,7 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     return response._embedded.synth;
   };
   
-  export const updateSynthesizer = async (id: string, modifiedSynth: SynthesizerInterface): Promise<boolean> => {
+  export const updateSynthesizer = async (id: number, modifiedSynth: SynthesizerInterface): Promise<boolean> => {
     const { response } = (
       await getlambdaResponse(
         `synth/${id}`,
