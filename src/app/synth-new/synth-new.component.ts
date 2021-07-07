@@ -2,8 +2,6 @@ import { Synthesizer } from './../classes/Synthesizer';
 import { fileToBase64, insertSynthesizer } from './../../services/synthesizer';
 import { Component, OnInit } from '@angular/core';
 
-// TODO refactor dei services
-
 @Component({
   selector: 'app-synth-new',
   templateUrl: './synth-new.component.html',
@@ -11,27 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SynthNewComponent implements OnInit {
 
-  base64textString: string[] = [];
-
   constructor(){
   }
 
   ngOnInit(): void {
-  }
-
-  onUploadChange(evt: any) {
-    const file = evt.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = this.handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(file);
-    }
-  }
-
-  handleReaderLoaded(e: any) {
-    this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
   }
 
   createNewSynthesizer = async (event: any) => {
