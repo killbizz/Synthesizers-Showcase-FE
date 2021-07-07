@@ -1,5 +1,5 @@
 import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-synth-item',
@@ -9,10 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SynthItemComponent implements OnInit {
 
   @Input() synth!: SynthesizerInterface;
+  @Output() onDeleteSynth = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  deleteSynthesizer(event: any){
+    this.onDeleteSynth.emit(this.synth.id);
   }
 
 }

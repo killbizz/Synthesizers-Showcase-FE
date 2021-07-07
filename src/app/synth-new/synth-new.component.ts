@@ -1,6 +1,7 @@
 import { Synthesizer } from './../classes/Synthesizer';
 import { fileToBase64, insertSynthesizer } from './../../services/synthesizer';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-synth-new',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SynthNewComponent implements OnInit {
 
-  constructor(){
+  constructor(private router: Router){
   }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class SynthNewComponent implements OnInit {
     const synth: Synthesizer = new Synthesizer(name, description, category, price, image);
 
     await insertSynthesizer(synth);
+    this.router.navigateByUrl('/synths');
   }
 
 }

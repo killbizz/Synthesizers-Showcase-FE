@@ -1,11 +1,11 @@
 <div class="card text-white bg-secondary">
-    <div class="card-header text-center">{{synth.id}}</div>
+    <div class="card-header text-center">ID: {{synth.id}}</div>
     <img class="card-img-top rounded" width="300" [src]="synth?.base64image" alt={{synth.name}} />
     <div class="card-body">
-        <h5 class="card-title text-center">{{synth?.name}}</h5>
-        <p class="card-text text-center">{{synth?.description}}</p>
-        <p class="card-text text-center">{{synth?.price}}&euro;</p>
+        <h5 class="card-title text-center">{{synth.name}}</h5>
+        <p class="card-text text-center">{{synth.description}}</p>
+        <p class="card-text text-center">{{synth.price}}&euro;</p>
         <a routerLink="/synths/{{synth.id}}"><button type="button" class="btn btn-primary" >Details</button></a>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" (click) = "deleteSynthesizer($event)" >Delete</button>
     </div>
 </div>

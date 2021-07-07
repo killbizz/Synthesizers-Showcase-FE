@@ -1,4 +1,4 @@
-import { getSynthesizers } from './../../services/synthesizer';
+import { deleteSynthesizer, getSynthesizers } from './../../services/synthesizer';
 import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,13 +11,18 @@ export class SynthsComponent implements OnInit {
 
   synths: SynthesizerInterface[] = [];
 
+  constructor() { }
+
+  ngOnInit(): void {
+    this.getAllSynthesizers();
+  }
+
   getAllSynthesizers = async () => {
     this.synths = await getSynthesizers();
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  deleteSynthesizer = async (id: number) => {
+    await deleteSynthesizer(id);
     this.getAllSynthesizers();
   }
 

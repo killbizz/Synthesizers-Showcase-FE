@@ -1,4 +1,4 @@
 <h1 class="text-center">Synthesizers Showcase</h1>
 <div class="card-group cards-container">
-    <app-synth-item *ngFor="let synth of synths" [synth] = "synth"></app-synth-item>
+    <app-synth-item *ngFor="let synth of synths" [synth] = "synth" (onDeleteSynth) = "deleteSynthesizer($event)"></app-synth-item>
 </div>
