@@ -5,7 +5,7 @@
         <h5 class="card-title text-center">{{synth?.name}}</h5>
         <p class="card-text text-center">{{synth?.description}}</p>
         <p class="card-text text-center">{{synth?.price}}&euro;</p>
-        <button type="button" class="btn btn-primary">Details</button>
+        <a routerLink="/synths/{{synth.id}}"><button type="button" class="btn btn-primary" >Details</button></a>
         <button type="button" class="btn btn-danger">Delete</button>
     </div>
 </div>
