@@ -1,4 +1,7 @@
+import { getSynthesizer } from './../../services/synthesizer';
+import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-synth-details',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SynthDetailsComponent implements OnInit {
 
-  constructor() { }
+  synth!: SynthesizerInterface;
+  id!: number;
+
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(
+      (params) => {
+        this.id = params.id;
+      }
+    );
+  }
 
   ngOnInit(): void {
+    this.getSynthesizerById();
+  }
+
+  getSynthesizerById = async () : Promise<void> => {
+    this.synth = await getSynthesizer(this.id);
   }
 
 }
