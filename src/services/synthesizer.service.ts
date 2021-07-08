@@ -1,11 +1,17 @@
+import { Injectable } from '@angular/core';
+
 import { NewSynthesizer } from 'src/app/classes/NewSynthesizer';
 import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
 import getlambdaResponse from 'src/lib/lambdas';
 
-// sposto tutto in un componente SERVICE 
+@Injectable({
+  providedIn: 'root'
+})
+export class SynthesizerService {
 
+  constructor() { }
 
-export const insertSynthesizer = async (synth: NewSynthesizer): Promise<boolean> => {
+  insertSynthesizer = async (synth: NewSynthesizer): Promise<boolean> => {
     const { response } = (
       await getlambdaResponse("synth", "POST", JSON.stringify(synth))
     ).props;
@@ -14,12 +20,12 @@ export const insertSynthesizer = async (synth: NewSynthesizer): Promise<boolean>
     }
     return true;
   };
-  
-  export const deleteSynthesizer = async (id: number): Promise<void> => {
+
+  deleteSynthesizer = async (id: number): Promise<void> => {
     await getlambdaResponse(`synth/${id}`, "DELETE", null);
   };
-  
-  export const getSynthesizers = async (): Promise<StoredSynthesizer[]> => {
+
+  getSynthesizers = async (): Promise<StoredSynthesizer[]> => {
     const { response } = (
       await getlambdaResponse("synth", "GET", null)
     ).props;
@@ -35,8 +41,8 @@ export const insertSynthesizer = async (synth: NewSynthesizer): Promise<boolean>
       return 0;
     })
   };
-  
-  export const updateSynthesizer = async (id: number, modifiedSynth: NewSynthesizer): Promise<boolean> => {
+
+  updateSynthesizer = async (id: number, modifiedSynth: NewSynthesizer): Promise<boolean> => {
     const { response } = (
       await getlambdaResponse(
         `synth/${id}`,
@@ -47,17 +53,18 @@ export const insertSynthesizer = async (synth: NewSynthesizer): Promise<boolean>
     if (response.error !== undefined) return false;
     return true;
   };
-  
-  export const getSynthesizer = async (id: number): Promise<StoredSynthesizer> => {
+
+  getSynthesizer = async (id: number): Promise<StoredSynthesizer> => {
     const { response } = (await getlambdaResponse(`synth/${id}`, "GET", null)).props;
     return response || null;
   };
 
-  export const fileToBase64 = async (file: any): Promise<string> => {
+  fileToBase64 = async (file: any): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsBinaryString(file);
       reader.onload = () => resolve('data:image/png;base64,'+btoa(reader.result!.toString()));
       reader.onerror = (e) => reject(e);
     });
-  };
+  }
+}

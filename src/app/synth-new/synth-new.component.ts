@@ -1,5 +1,5 @@
+import { SynthesizerService } from './../../services/synthesizer.service';
 import { NewSynthesizer } from '../classes/NewSynthesizer';
-import { fileToBase64, insertSynthesizer } from './../../services/synthesizer';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SynthNewComponent implements OnInit {
 
-  constructor(private router: Router){
+  constructor(private synthesizerService: SynthesizerService, private router: Router){
   }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class SynthNewComponent implements OnInit {
     const fileObject = event.target.image.files[0];
     let base64StringImage: string = "";
     if (fileObject) {
-      base64StringImage = await fileToBase64(fileObject);
+      base64StringImage = await this.synthesizerService.fileToBase64(fileObject);
     }
     const name: string = event.target.name.value ? event.target.name.value : "";
     const description: string = event.target.description.value ? event.target.description.value : "";
@@ -33,7 +33,7 @@ export class SynthNewComponent implements OnInit {
 
     const synth: NewSynthesizer = new NewSynthesizer(name, description, category, price, image);
 
-    await insertSynthesizer(synth);
+    await this.synthesizerService.insertSynthesizer(synth);
     this.router.navigateByUrl('/synths');
   }
 

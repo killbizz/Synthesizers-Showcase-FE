@@ -1,5 +1,5 @@
+import { SynthesizerService } from './../../services/synthesizer.service';
 import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
-import { deleteSynthesizer, getSynthesizers } from './../../services/synthesizer';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,18 +11,18 @@ export class SynthsComponent implements OnInit {
 
   synths: StoredSynthesizer[] = [];
 
-  constructor() { }
+  constructor(private synthesizerService: SynthesizerService) { }
 
   ngOnInit(): void {
     this.getAllSynthesizers();
   }
 
   getAllSynthesizers = async () => {
-    this.synths = await getSynthesizers();
+    this.synths = await this.synthesizerService.getSynthesizers();
   }
 
   deleteSynthesizer = async (id: number) => {
-    await deleteSynthesizer(id);
+    await this.synthesizerService.deleteSynthesizer(id);
     this.getAllSynthesizers();
   }
 

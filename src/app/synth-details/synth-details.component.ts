@@ -1,5 +1,5 @@
+import { SynthesizerService } from './../../services/synthesizer.service';
 import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
-import { getSynthesizer } from './../../services/synthesizer';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class SynthDetailsComponent implements OnInit {
   synth: StoredSynthesizer = new StoredSynthesizer();
   id!: number;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private synthesizerService: SynthesizerService ,private route: ActivatedRoute) {
     this.route.params.subscribe(
       (params) => {
         this.id = params.id;
@@ -26,7 +26,7 @@ export class SynthDetailsComponent implements OnInit {
   }
 
   getSynthesizerById = async () : Promise<void> => {
-    this.synth = await getSynthesizer(this.id);
+    this.synth = await this.synthesizerService.getSynthesizer(this.id);
   }
 
 }
