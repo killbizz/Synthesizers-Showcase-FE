@@ -1,3 +1,6 @@
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { SynthesizerService } from './services/synthesizer.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +14,8 @@ import { SynthDetailsComponent } from './synth-details/synth-details.component';
 import { SynthNewComponent } from './synth-new/synth-new.component';
 import { SynthEditComponent } from './synth-edit/synth-edit.component';
 import { RoutingModule } from './routing.module';
+import { LoginComponent } from './login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,14 +26,17 @@ import { RoutingModule } from './routing.module';
     SynthItemComponent,
     SynthDetailsComponent,
     SynthNewComponent,
-    SynthEditComponent
+    SynthEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RoutingModule
+    RoutingModule,
+    NgbModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [SynthesizerService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
