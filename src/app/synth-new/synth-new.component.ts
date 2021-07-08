@@ -1,4 +1,4 @@
-import { SynthesizerService } from './../../services/synthesizer.service';
+import { SynthesizerService } from './../services/synthesizer.service';
 import { NewSynthesizer } from '../classes/NewSynthesizer';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
