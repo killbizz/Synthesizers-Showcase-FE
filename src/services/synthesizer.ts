@@ -1,10 +1,11 @@
+import { NewSynthesizer } from 'src/app/classes/NewSynthesizer';
+import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
 import getlambdaResponse from 'src/lib/lambdas';
-import { SynthesizerInterface } from './../app/interfaces/SynthesizerInterface';
 
 // sposto tutto in un componente SERVICE 
 
 
-export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<boolean> => {
+export const insertSynthesizer = async (synth: NewSynthesizer): Promise<boolean> => {
     const { response } = (
       await getlambdaResponse("synth", "POST", JSON.stringify(synth))
     ).props;
@@ -18,16 +19,24 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     await getlambdaResponse(`synth/${id}`, "DELETE", null);
   };
   
-  export const getSynthesizers = async (): Promise<SynthesizerInterface[]> => {
+  export const getSynthesizers = async (): Promise<StoredSynthesizer[]> => {
     const { response } = (
       await getlambdaResponse("synth", "GET", null)
     ).props;
   
     if (!response._embedded) return [];
-    return response._embedded.synth;
+    return response._embedded.synth.sort((a: StoredSynthesizer,b : StoredSynthesizer) => {
+      if(a.id > b.id){
+        return -1;
+      }
+      if(a.id < b.id){
+        return 1;
+      }
+      return 0;
+    })
   };
   
-  export const updateSynthesizer = async (id: number, modifiedSynth: SynthesizerInterface): Promise<boolean> => {
+  export const updateSynthesizer = async (id: number, modifiedSynth: NewSynthesizer): Promise<boolean> => {
     const { response } = (
       await getlambdaResponse(
         `synth/${id}`,
@@ -39,7 +48,7 @@ export const insertSynthesizer = async (synth: SynthesizerInterface): Promise<bo
     return true;
   };
   
-  export const getSynthesizer = async (id: number): Promise<SynthesizerInterface> => {
+  export const getSynthesizer = async (id: number): Promise<StoredSynthesizer> => {
     const { response } = (await getlambdaResponse(`synth/${id}`, "GET", null)).props;
     return response || null;
   };

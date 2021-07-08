@@ -1,5 +1,5 @@
+import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
 import { deleteSynthesizer, getSynthesizers } from './../../services/synthesizer';
-import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SynthsComponent implements OnInit {
 
-  synths: SynthesizerInterface[] = [];
+  synths: StoredSynthesizer[] = [];
 
   constructor() { }
 

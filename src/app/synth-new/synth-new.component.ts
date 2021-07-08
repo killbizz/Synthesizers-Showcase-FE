@@ -1,4 +1,4 @@
-import { Synthesizer } from './../classes/Synthesizer';
+import { NewSynthesizer } from '../classes/NewSynthesizer';
 import { fileToBase64, insertSynthesizer } from './../../services/synthesizer';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -31,7 +31,7 @@ export class SynthNewComponent implements OnInit {
     const image: string = base64StringImage !== "" ? base64StringImage : "";
     const category: string = event.target.category.value ? event.target.category.value : ""
 
-    const synth: Synthesizer = new Synthesizer(name, description, category, price, image);
+    const synth: NewSynthesizer = new NewSynthesizer(name, description, category, price, image);
 
     await insertSynthesizer(synth);
     this.router.navigateByUrl('/synths');

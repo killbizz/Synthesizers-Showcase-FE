@@ -1,8 +1,8 @@
-import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
+import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Synthesizer } from '../classes/Synthesizer';
 import { fileToBase64, getSynthesizer, updateSynthesizer } from 'src/services/synthesizer';
+import { NewSynthesizer } from '../classes/NewSynthesizer';
 
 @Component({
   selector: 'app-synth-edit',
@@ -12,7 +12,7 @@ import { fileToBase64, getSynthesizer, updateSynthesizer } from 'src/services/sy
 export class SynthEditComponent implements OnInit {
 
   id!: number;
-  synth: SynthesizerInterface = new Synthesizer(undefined, undefined, undefined, undefined, undefined);
+  synth: StoredSynthesizer = new StoredSynthesizer();
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe((params) => {
@@ -43,7 +43,7 @@ export class SynthEditComponent implements OnInit {
     const image: string | undefined = base64StringImage !== "" ? base64StringImage : this.synth.base64image;
     const category: string = event.target.category.value ? event.target.category.value : this.synth.category;
 
-    const synth: Synthesizer = new Synthesizer(name, description, category, price, image);
+    const synth: NewSynthesizer = new NewSynthesizer(name, description, category, price, image);
 
     await updateSynthesizer(this.id, synth)
     this.router.navigateByUrl('/synths');

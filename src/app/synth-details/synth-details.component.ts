@@ -1,8 +1,7 @@
+import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
 import { getSynthesizer } from './../../services/synthesizer';
-import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Synthesizer } from '../classes/Synthesizer';
 
 @Component({
   selector: 'app-synth-details',
@@ -11,7 +10,7 @@ import { Synthesizer } from '../classes/Synthesizer';
 })
 export class SynthDetailsComponent implements OnInit {
 
-  synth: SynthesizerInterface = new Synthesizer(undefined, undefined, undefined, undefined, undefined);
+  synth: StoredSynthesizer = new StoredSynthesizer();
   id!: number;
 
   constructor(private route: ActivatedRoute) {

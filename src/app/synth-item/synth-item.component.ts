@@ -1,4 +1,4 @@
-import { SynthesizerInterface } from './../interfaces/SynthesizerInterface';
+import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SynthItemComponent implements OnInit {
 
-  @Input() synth!: SynthesizerInterface;
+  @Input() synth!: StoredSynthesizer;
   @Output() onDeleteSynth = new EventEmitter<number>();
 
   constructor() { }
