@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { NewSynthesizer } from 'src/app/classes/NewSynthesizer';
 import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
-import getlambdaResponse from 'src/lib/lambdas';
+import getlambdaResponse from 'src/app/lib/lambdas';
 
 @Injectable({
   providedIn: 'root'
