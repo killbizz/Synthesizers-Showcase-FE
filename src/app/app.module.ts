@@ -1,7 +1,5 @@
-import { HomepageComponent } from './homepage/homepage.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,34 +10,7 @@ import { SynthItemComponent } from './synth-item/synth-item.component';
 import { SynthDetailsComponent } from './synth-details/synth-details.component';
 import { SynthNewComponent } from './synth-new/synth-new.component';
 import { SynthEditComponent } from './synth-edit/synth-edit.component';
-
-const routes : Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    component: HomepageComponent
-  },
-  {
-    path: 'index',
-    pathMatch: 'full',
-    redirectTo: ''
-  },
-  {
-    path: 'synths',
-    component: SynthsComponent
-  },
-  {
-    path: 'synths/new',
-    component: SynthNewComponent
-  },{
-    path: 'synths/:id',
-    component: SynthDetailsComponent
-  },
-  {
-    path: 'synths/:id/edit',
-    component: SynthEditComponent
-  }
-]
+import { RoutingModule } from './routing.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +26,7 @@ const routes : Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
