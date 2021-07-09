@@ -16,6 +16,7 @@ import { SynthEditComponent } from './synth-edit/synth-edit.component';
 import { RoutingModule } from './routing.module';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SynthDetailsComponent,
     SynthNewComponent,
     SynthEditComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

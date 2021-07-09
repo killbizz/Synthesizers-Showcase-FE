@@ -25,9 +25,9 @@
         <div class="form-group row">
             <label for="price" class="col-sm-4 col-form-label">Price</label>
             <div class="col-sm-8">
-                <input type="number" min="0" step="0.01" readonly class="form-control-plaintext text-center" name="price" id="price" placeholder={{synth.price}}>
+                <input type="text" readonly class="form-control-plaintext text-center" name="price" id="price" placeholder={{synth.price}}>
             </div>
         </div>
-        <a routerLink="/synths/{{synth.id}}/edit"><button type="button" class="btn btn-warning">Edit</button></a>
+        <a *ngIf="userLogged" routerLink="/synths/{{synth.id}}/edit"><button type="button" class="btn btn-warning">Edit</button></a>
     </div>
 </form>

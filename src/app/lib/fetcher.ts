@@ -24,9 +24,17 @@ export default class Fetcher {
         method,
       });
     }
-    if(method !== "DELETE"){
-      const data = req.json();
-      return data;
+    if(req.status === 404){
+      return {
+        error: "error 404, not found"
+      }
     }
+    if(req.status === 400){
+      return {
+        error: "error 400, bad request"
+      }
+    }
+    const data = req.json();
+    return data;
   }
 }

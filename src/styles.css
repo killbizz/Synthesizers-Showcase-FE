@@ -32,20 +32,14 @@ body, html {
 
   .cards-container{
     padding: 1.5rem;
-    margin-right: 0;
-    margin-left: 0;
-    border-width: .2rem;
+    /* align-items: center; */
+    justify-content: center;
   }
-
-  .newSynthesizerForm {
-    margin-left:8em;
-    margin-right:8em;
-}
 
 .newSynthesizerForm input {
     width: 20em;
     text-align: center;
-    margin: 0.4em;
+    margin: 0.2em;
 }
 
 textarea{

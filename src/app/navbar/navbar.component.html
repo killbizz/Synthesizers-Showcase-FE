@@ -16,18 +16,18 @@
               <a class="nav-link" href="" routerLink="synths">Showcase</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="" routerLink="synths/new">New Synthesizer</a>
+               <a *ngIf="userLogged" class="nav-link" href="" routerLink="synths/new">New Synthesizer</a>
             </li>
         </ul>
         </div>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-              <a *ngIf="!userLogged" class="nav-link px-3" href="#" (click)="login($event)">Login</a>
+              <a *ngIf="!userLogged && !userInLoginOrSignUpPage" class="nav-link px-3" href="#" (click)="login($event)">Login</a>
             </div>
         </div>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-              <a *ngIf="userLogged" class="nav-link px-3" href="#" (click)="logout($event)">Logout</a>
+              <a *ngIf="userLogged && !userInLoginOrSignUpPage" class="nav-link px-3" href="#" (click)="logout($event)">Logout</a>
             </div>
         </div>
     </div>

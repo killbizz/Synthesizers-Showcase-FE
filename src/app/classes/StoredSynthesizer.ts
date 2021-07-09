@@ -1,6 +1,6 @@
-import { Synthesizer } from '../interfaces/Synthesizer';
+import { SynthesizerInterface } from '../interfaces/SynthesizerInterface';
 
-export class StoredSynthesizer implements Synthesizer{
+export class StoredSynthesizer implements SynthesizerInterface{
     id: number = 0;
     name: string = "";
     description: string = "";

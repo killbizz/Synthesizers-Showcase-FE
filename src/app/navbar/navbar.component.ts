@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class NavbarComponent implements OnInit {
 
   userLogged: boolean = false;
+  userInLoginOrSignUpPage: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.authService.userSignedIn.subscribe(() => {
@@ -17,6 +18,15 @@ export class NavbarComponent implements OnInit {
     });
     this.authService.userLoggedOut.subscribe(() => {
       this.userLogged = false;
+    });
+    router.events.forEach((event) => {
+      if(event instanceof NavigationEnd) {
+        if(event.url === '/login' || event.url === '/sign-up'){
+          this.userInLoginOrSignUpPage = true;
+        } else {
+          this.userInLoginOrSignUpPage = false;
+        }
+      }
     });
   }
 

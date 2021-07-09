@@ -1,3 +1,4 @@
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,7 +9,6 @@ import { SynthNewComponent } from './synth-new/synth-new.component';
 import { SynthDetailsComponent } from './synth-details/synth-details.component';
 import { SynthEditComponent } from './synth-edit/synth-edit.component';
 import { RouteGuardService } from 'src/app/services/route-guard.service';
-import { AuthService } from './services/auth.service';
 
 
 const routes : Routes = [
@@ -42,6 +42,10 @@ const routes : Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent
   }
 ]
 
