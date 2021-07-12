@@ -42,10 +42,6 @@ body, html {
     margin: 0.2em;
 }
 
-textarea{
-    resize: both !important;
-}
-
 .boxing-form {
     text-align: center;
     width: 80%;
@@ -58,8 +54,8 @@ textarea{
 
 img{
   width:100%;
-  max-width:300px !important;
-  max-height:300px !important;
+  max-width:400px;
+  max-height:300px;
 }
 
 .homepage{
