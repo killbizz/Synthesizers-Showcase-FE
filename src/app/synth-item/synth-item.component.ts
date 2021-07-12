@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { StoredSynthesizer } from 'src/app/classes/StoredSynthesizer';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
@@ -10,10 +11,19 @@ export class SynthItemComponent implements OnInit {
 
   @Input() synth!: StoredSynthesizer;
   @Output() onDeleteSynth = new EventEmitter<number>();
+  userLogged: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) {
+    this.authService.userSignedIn.subscribe(() => {
+      this.userLogged = true;
+    });
+    this.authService.userLoggedOut.subscribe(() => {
+      this.userLogged = false;
+    })
+   }
 
   ngOnInit(): void {
+    this.userLogged = this.authService.isUserLoggedIn();
   }
 
   deleteSynthesizer(event: any){
