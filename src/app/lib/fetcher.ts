@@ -34,6 +34,11 @@ export default class Fetcher {
         error: "error 400, bad request"
       }
     }
+    if(req.status === 403){
+      return {
+        error: "error 403, forbidden"
+      }
+    }
     const data = req.json();
     return data;
   }
